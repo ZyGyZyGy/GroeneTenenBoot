@@ -1,6 +1,7 @@
 package be.vdab.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,11 @@ class DefaultWerknemerService implements WerknemerService {
     @Override
     public List<Werknemer> findByVoornaam(String voornaam) {
 	return werknemerRepository.findByVoornaam(voornaam);
+    }
+    
+    @Override
+    public Optional<Werknemer> read(long id) {
+	return Optional.ofNullable(werknemerRepository.findOne(id));
     }
     
 }
